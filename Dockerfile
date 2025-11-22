@@ -1,4 +1,5 @@
 FROM eclipse-temurin:17-jdk-alpine AS build
+RUN apk update && apk add maven
 WORKDIR /app
 COPY . .
 RUN ./mvn -q
