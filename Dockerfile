@@ -1,8 +1,8 @@
 FROM eclipse-temurin:17-jdk-alpine AS build
-RUN apk update && apk add maven
+
 WORKDIR /app
 COPY . .
-RUN ./mvnw -q
+RUN ./mvnw -q -DskipTests package
 FROM eclipse-temurin:17-jre-alpine
 WORKDIR /app
 COPY --from=build /app/target/*.jar app.jar
